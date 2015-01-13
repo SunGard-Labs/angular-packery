@@ -202,6 +202,9 @@
         scope.draggable = scope.draggable || config.draggable;
         scope.handle = scope.handle || config.handle;
 
+        // Check isInitLayout for falsey
+        if (scope.isInitLayout === "false") scope.isInitLayout = false;
+
         // Set global draggability
         scope.draggable ? controller.setDraggable(scope.handle) : angular.noop();
 
