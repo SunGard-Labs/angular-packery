@@ -1,7 +1,7 @@
 /*!
  * angular-packery
  * http://github.com/sungard-labs/angular-packery
- * Version: 1.0.0
+ * Version: 1.0.1
  * License: MIT
  */
 
@@ -65,7 +65,7 @@
           return packeryObj;
         } else {
           var interval = $interval(function(){
-            if (packeryObj !== undefined) {
+            if (packeryObj !== undefined) { 
               $interval.cancel(interval);
               deferred.resolve(packeryObj);
             }
@@ -75,7 +75,7 @@
             $interval.cancel(interval);
             deferred.reject(false);
           }, config.timeout);
-
+          
           return deferred.promise;
         }
       }
@@ -93,7 +93,7 @@
     self.packery = {};
 
     this.bindDragEvents = function(el) {
-      var handleSelector, handle, draggabilly;
+      var handleSelector, handle, draggabilly;   
 
       handleSelector = self.dragHandle;
 
@@ -156,7 +156,7 @@
 
         el.css('visibility','visible');
         $rootScope.$emit('packeryObjectPacked', el[0]);
-      });
+      });    
     };
 
     this.setDraggable = function (handle) {
@@ -189,7 +189,7 @@
         handle: '@?' // Type: Boolean
 
         // Let's come back to this one...
-        // stamp: '@?',
+        // stamp: '@?', 
       },
       link: function (scope, element, attrs, controller) {
 
@@ -201,9 +201,6 @@
         scope.rowHeight = scope.rowHeight || config.rowHeight;
         scope.draggable = scope.draggable || config.draggable;
         scope.handle = scope.handle || config.handle;
-
-        // Check isInitLayout for falsey
-        if (scope.isInitLayout === "false") scope.isInitLayout = false;
 
         // Set global draggability
         scope.draggable ? controller.setDraggable(scope.handle) : angular.noop();
@@ -241,7 +238,7 @@
         element.css('visibility','hidden');
 
         // Packs individual objects
-        controller.packObject(element);
+        controller.packObject(element);    
       }
     };
   };
@@ -249,7 +246,7 @@
   var packeryTemplates = function ($templateCache) {
     $templateCache
       .put('template/packery/packery.html', [
-        '<div>',
+        '<div>', 
           '<div class="packery-sizer"></div>',
           '<div class="packery-container" ng-transclude></div>',
         '</div>'
