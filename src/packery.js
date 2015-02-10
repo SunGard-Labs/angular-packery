@@ -195,6 +195,15 @@
         scope.draggable = scope.draggable || config.draggable;
         scope.handle = scope.handle || config.handle;
 
+        // Quick fix so 'false' strings don't evaluate to true
+        // @TODO: Check for attribute itself, not value of attribute
+        if (scope.draggable === 'false') { scope.draggable = false; }
+        if (scope.isHorizontal === 'false') { scope.isHorizontal = false; }
+        if (scope.isInitLayout === 'false') { scope.isInitLayout = false; }
+        if (scope.isOriginLeft === 'false') { scope.isOriginLeft = false; }
+        if (scope.isOriginTop === 'false') { scope.isOriginTop = false; }
+        if (scope.isResizeBound === 'false') { scope.isResizeBound = false; }
+
         // Set global draggability
         scope.draggable ? controller.setDraggable(scope.handle) : angular.noop();
 
