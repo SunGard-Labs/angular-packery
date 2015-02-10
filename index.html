@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="angular-packery : An Angular.js wrapper module for the  Packery.js bin-packing library.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>angular-packery</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/joshuahiggins/angular-packery">View on GitHub</a>
+
+          <h1 id="project_title">angular-packery</h1>
+          <h2 id="project_tagline">An Angular.js wrapper module for the  Packery.js bin-packing library.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/joshuahiggins/angular-packery/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/joshuahiggins/angular-packery/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="angular-packery" class="anchor" href="#angular-packery" aria-hidden="true"><span class="octicon octicon-link"></span></a>angular-packery</h1>
+
+<p>Angular module for the popular Packery library.</p>
+
+<h4>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h4>
+
+<ul>
+<li><a href="http://packery.metafizzy.co/">Packery</a></li>
+</ul>
+
+<h4>
+<a id="optional" class="anchor" href="#optional" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optional</h4>
+
+<ul>
+<li><a href="http://draggabilly.desandro.com/">Draggabilly</a></li>
+</ul>
+
+<hr>
+
+<h2>
+<a id="example-usage" class="anchor" href="#example-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example Usage</h2>
+
+<h3>
+<a id="simple" class="anchor" href="#simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple</h3>
+
+<p>By default, this module listens for an element or attribute call and instantiates with the options described in <a href="http://packery.metafizzy.co/options.html">Packery's API</a>. It looks to a self-created object, <code>div.packery-sizer</code>, to control the grid dimensions.</p>
+
+<h5>
+<a id="html" class="anchor" href="#html" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML</h5>
+
+<pre><code>&lt;packery ng-init="objects = [{id:'1'},{id:'2'},{id:'3'}]"&gt;
+
+  &lt;packery-object&gt;
+    &lt;header&gt;
+      &lt;h3&gt;Sample object&lt;/h3&gt;
+    &lt;/header&gt;
+    &lt;div ng-include="'/resources/partials/some-partial.html'"&gt;&lt;/div&gt;
+  &lt;/packery-object&gt;
+
+  &lt;packery-object&gt;
+    &lt;div&gt;Mmmm pizza&lt;/div&gt;
+  &lt;/packery-object&gt;
+
+  &lt;packery-object&gt;asdasd&lt;/packery-object&gt;
+
+  &lt;packery-object ng-repeat="obj in objects"&gt;
+     &lt;h3&gt;Dynamic object #{{obj.id}}&lt;/h3&gt;
+  &lt;/packery-object&gt;
+
+  &lt;packery-object&gt;
+    &lt;h3&gt;One more&lt;/h3&gt;
+    &lt;p&gt;...for the road&lt;/p&gt;
+  &lt;/packery-object&gt;
+
+&lt;/packery&gt;
+</code></pre>
+
+<h4>
+<a id="css" class="anchor" href="#css" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSS</h4>
+
+<pre><code>.packery-sizer, .packery-object {
+  width: 360px;
+  height: 500px;
+}
+</code></pre>
+
+<h3>
+<a id="custom" class="anchor" href="#custom" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom</h3>
+
+<p>This module supports almost all of the Packery options in their intended form. As such, custom options can be set via attributes on the main packery element. Please refer to <a href="http://packery.metafizzy.co/options.html">Packery's website</a> for available options.</p>
+
+<h5>
+<a id="html-1" class="anchor" href="#html-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML</h5>
+
+<pre><code>&lt;packery row-height=".card.single" column-width=".card.single" handle=".card-header" is-origin-top="false" gutter="20"&gt;
+
+  &lt;packery-object class="card single"&gt;
+    &lt;header class="card-header"&gt;
+      &lt;h3&gt;Uno&lt;/h3&gt;
+    &lt;/header&gt;
+    &lt;div&gt;One&lt;/div&gt;
+  &lt;/packery-object&gt;
+
+  &lt;packery-object class="card double"&gt;
+    &lt;header class="card-header"&gt;
+      &lt;h3&gt;Dos&lt;/h3&gt;
+    &lt;/header&gt;
+    &lt;div&gt;Two&lt;/div&gt;
+  &lt;/packery-object&gt;
+
+  &lt;packery-object class="card single"&gt;
+    &lt;header class="card-header"&gt;
+      &lt;h3&gt;Tres&lt;/h3&gt;
+    &lt;/header&gt;
+    &lt;div&gt;Three&lt;/div&gt;
+  &lt;/packery-object&gt;
+
+  &lt;packery-object class="card single"&gt;
+    &lt;header class="card-header"&gt;
+      &lt;h3&gt;Fourso&lt;/h3&gt;
+    &lt;/header&gt;
+    &lt;div&gt;Four&lt;/div&gt;
+  &lt;/packery-object&gt;
+
+&lt;/packery&gt;
+</code></pre>
+
+<h5>
+<a id="css-1" class="anchor" href="#css-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSS</h5>
+
+<pre><code>.card.single {
+  width: 300px;
+  height: 400px;
+}
+
+.card.double {
+  width: 620px;
+  height: 400px;
+}
+
+.card-header {
+  cursor: move;
+}
+</code></pre>
+
+<hr>
+
+<h2>
+<a id="css-classes--animating" class="anchor" href="#css-classes--animating" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSS Classes / Animating</h2>
+
+<p>Two CSS classes are applied to the objects to show depth during dragging events, <code>hovered</code> and <code>lifted</code>. The classes are triggered by both mouse events and touch events. </p>
+
+<p>Animation can be applied easily with CSS:</p>
+
+<pre><code>.card {
+  -webkit-transition: box-shadow 0.2s;
+  -moz-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+}
+
+.card.hovered {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card.lifted {
+  box-shadow: 0 13px 33px rgba(100,100,100,0.30), 0 8px 12px rgba(100,100,100,0.22);
+  z-index: 5;
+}
+</code></pre>
+
+<hr>
+
+<h2>
+<a id="events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h2>
+
+<p><code>packeryInstantiated</code> - Emits Packery obj. Fired when a new Packery container is created.</p>
+
+<p><code>packeryObjectPacked</code> - Emits element. Fired when an object is packed.</p>
+
+<hr>
+
+<h2>
+<a id="a-note-on-ng-include-and-draggability" class="anchor" href="#a-note-on-ng-include-and-draggability" aria-hidden="true"><span class="octicon octicon-link"></span></a>A note on ng-include and draggability</h2>
+
+<p>Due to how Angular builds <code>ng-include</code> templates, this module does not support using <code>ng-include</code> on your <code>packery-object</code> or custom handle elements. Doing so will cause draggability issues.</p>
+
+<p>To ensure that your dynamic content packs and drags properly, please ensure that the objects and handles are built outside of any <code>ng-include</code>'d content.</p>
+
+<p><strong>Good:</strong></p>
+
+<pre><code>&lt;packery-object&gt;
+  &lt;div ng-include="'template.html'"&gt;&lt;/div&gt;
+&lt;/packery-object&gt;
+</code></pre>
+
+<p><strong>Bad:</strong></p>
+
+<pre><code>&lt;packery-object ng-include="'template.html'"&gt;&lt;/packery-object&gt;
+</code></pre>
+
+<p><strong>Good:</strong></p>
+
+<pre><code>&lt;packery handle=".card-header"&gt;
+  &lt;packery-object class="card"&gt;
+    &lt;header class="card-header"&gt;&lt;h3&gt;Drag handle&lt;/h3&gt;&lt;/header&gt;
+    &lt;div ng-include="'template.html'"&gt;&lt;/div&gt;
+  &lt;/packery-object&gt;
+&lt;/packery&gt;
+</code></pre>
+
+<p><strong>Bad:</strong></p>
+
+<pre><code>&lt;packery-object handle=".handle-in-template"&gt;
+  &lt;div ng-include="'template.html'"&gt;&lt;/div&gt;
+&lt;/packery-object&gt;
+</code></pre>
+
+<hr>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>This repository is open source and distributed under the MIT License:</p>
+
+<pre><code>The MIT License
+
+Copyright (c) 2014 Sungard http://www.sungard.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+</code></pre>
+
+<p>Packery is a product of Metafizzy LLC and is distributed under a separate license. Please refer to <a href="http://packery.metafizzy.co/license.html">their website</a> for information on Packery's license.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">angular-packery maintained by <a href="https://github.com/joshuahiggins">joshuahiggins</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-16186421-5");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
