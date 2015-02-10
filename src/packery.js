@@ -97,14 +97,14 @@
         draggabilly = new Draggabilly(el[0], {
           handle: handleSelector
         });
-        handle = el.querySelectorAll(handleSelector);
+        handle = el[0].querySelectorAll(handleSelector);
       }
 
       // Init Draggabilly events
       self.packery.bindDraggabillyEvents(draggabilly);
 
       // Bind animate events for touch
-      handle.on('mouseenter', function(){
+      angular.element(handle).on('mouseenter', function(){
         el.addClass('hovered');
       }).
       on('mouseleave', function(){
