@@ -205,7 +205,7 @@
         if (scope.isResizeBound === 'false') { scope.isResizeBound = false; }
 
         // Set global draggability
-        scope.draggable ? controller.setDraggable(scope.handle) : angular.noop();
+        if (scope.draggable) { controller.setDraggable(scope.handle); }
 
         // Create object for Packery instantiation
         packeryObj = controller.createAttrObj(scope);
