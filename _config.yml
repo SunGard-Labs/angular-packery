@@ -20,5 +20,12 @@ keywords: [
 
 # Build settings
 markdown: kramdown
-exclude:
-  - bower.json
+exclude: [
+  'bower.json',
+  'resources/lib/angular-packery/src',
+  'resources/lib/angular-packery/bower.json',
+  'resources/lib/angular-packery/Gruntfile.js',
+  'resources/lib/angular-packery/LICENSE',
+  'resources/lib/angular-packery/package.json',
+  'resources/lib/angular-packery/README.MD'
+]
