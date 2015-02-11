@@ -1,6 +1,6 @@
 .DS_Store
 .sass-cache/*
-bower-components/*
-_site/bower-components/*
+resources/lib/*
+_site/resources/lib/*
 
-!_site/bower-components/angular-packery/*
+!_site/resources/lib/angular-packery/*
