@@ -1,0 +1,39 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
+.demo-wrapper {
+  background: #272822;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+
+.packery-sizer, .packery-object {
+  height: 30px;
+  width: 30px; }
+
+.packery-object.color-a {
+  background: #a6e22e; }
+.packery-object.color-b {
+  background: #66d9ef; }
+.packery-object.color-c {
+  background: #ae81ff; }
+.packery-object.color-d {
+  background: #f92672; }
+.packery-object.h-single {
+  height: 30px; }
+.packery-object.h-double {
+  height: 60px; }
+.packery-object.h-triple {
+  height: 90px; }
+.packery-object.w-single {
+  width: 30px; }
+.packery-object.w-double {
+  width: 60px; }
+.packery-object.w-triple {
+  width: 90px; }
+#gutter .packery-object.h-double {
+  height: 65px; }
+#gutter .packery-object.h-triple {
+  height: 100px; }

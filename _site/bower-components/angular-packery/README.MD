@@ -1,31 +1,27 @@
+# angular-packery #
+
+Angular module for the popular Packery library.
+
+
+#### Requirements ####
+
+* [Packery](http://packery.metafizzy.co/)
+
+#### Optional ###
+
+* [Draggabilly](http://draggabilly.desandro.com/)
+
 ---
-layout: default
----
 
-<section>
-  <h2>Dependencies</h2>
+## Example Usage ##
 
-  <h5>Required</h5>
-  <ul>
-    <li><a href="http://packery.metafizzy.co/">Packery</a></li>
-  </ul>
+### Simple ###
 
-  <h5>Optional</h5>
-  <ul>
-    <li><a href="http://draggabilly.desandro.com/">Draggabilly</a></li>
-    <li><a href="http://jqueryui.com/">jQuery UI</a></li>
-  </ul>
-</section>
+By default, this module listens for an element or attribute call and instantiates with the options described in [Packery's API](http://packery.metafizzy.co/options.html). It looks to a self-created object, `div.packery-sizer`, to control the grid dimensions.
 
-
-<section>
-  <h2>Example Usage</h2>
-
-  <h3>Simple</h3>
-  <p>By default, this module listens for an element or attribute call and instantiates with the options described in <a href="http://packery.metafizzy.co/options.html">Packery's API</a>. It looks to a self-created object, <code>div.packery-sizer</code>, to control the grid dimensions.</p>
-
-  <h5>HTML</h5>
-  {% highlight html %}
+##### HTML #####
+ 
+```
 <packery ng-init="objects = [{id:'1'},{id:'2'},{id:'3'}]">
 
   <packery-object>
@@ -51,21 +47,24 @@ layout: default
   </packery-object>
 
 </packery>
-  {% endhighlight %}
+```
+  
+#### CSS ####
 
-  <h5>CSS</h5>
-  {% highlight css %}
+```
 .packery-sizer, .packery-object {
   width: 360px;
   height: 500px;
 }
-  {% endhighlight %}
+```
 
-  <h3>Custom</h3>
-  <p>This module supports almost all of the Packery options in their intended form. As such, custom options can be set via attributes on the main packery element. Please refer to <a href="http://packery.metafizzy.co/options.html">Packery's website</a> for available options.</p>
+### Custom ###
 
-  <h5>HTML</h5>
-  {% highlight html %}
+This module supports almost all of the Packery options in their intended form. As such, custom options can be set via attributes on the main packery element. Please refer to [Packery's website](http://packery.metafizzy.co/options.html) for available options.
+
+##### HTML #####
+
+```
 <packery row-height=".card.single" column-width=".card.single" handle=".card-header" is-origin-top="false" gutter="20">
 
   <packery-object class="card single">
@@ -97,10 +96,10 @@ layout: default
   </packery-object>
 
 </packery>
-  {% endhighlight %}
+```
 
-  <h5>CSS</h5>
-  {% highlight css %}
+##### CSS #####
+```
 .card.single {
   width: 300px;
   height: 400px;
@@ -114,17 +113,17 @@ layout: default
 .card-header {
   cursor: move;
 }
-  {% endhighlight %}
-</section>
+```
 
+---
 
-<section>
-  <h2>CSS Classes / Animating</h2>
-  <p>Two CSS classes are applied to the objects to show depth during dragging events, <code>hovered</code> and <code>lifted</code>. The classes are triggered by both mouse events and touch events. </p>
+## CSS Classes / Animating ##
 
-  <p>Animation can be applied easily with CSS:</p>
+Two CSS classes are applied to the objects to show depth during dragging events, `hovered` and `lifted`. The classes are triggered by both mouse events and touch events. 
 
-  {% highlight css %}
+Animation can be applied easily with CSS:
+
+```
 .card {
   -webkit-transition: box-shadow 0.2s;
   -moz-transition: box-shadow 0.2s;
@@ -139,63 +138,65 @@ layout: default
   box-shadow: 0 13px 33px rgba(100,100,100,0.30), 0 8px 12px rgba(100,100,100,0.22);
   z-index: 5;
 }
-  {% endhighlight %}
-</section>
+```
 
+---
 
-<section>
-  <h2>Events</h2>
-  <p><code>packeryInstantiated</code> - Emits Packery obj. Fired when a new Packery container is created.</p>
+## Events ##
 
-  <p><code>packeryObjectPacked</code> - Emits element. Fired when an object is packed.</p>
-</section>
+`packeryInstantiated` - Emits Packery obj. Fired when a new Packery container is created.
 
+`packeryObjectPacked` - Emits element. Fired when an object is packed.
 
-<section>
-  <h2>A note on ng-include and draggability</h2>
+---
 
-  <p>Due to how Angular builds <code>ng-include</code> templates, this module does not support using <code>ng-include</code> on your <code>packery-object</code> or custom handle elements. Doing so will cause draggability issues.</p>
+## A note on ng-include and draggability ##
 
-  <p>To ensure that your dynamic content packs and drags properly, please ensure that the objects and handles are built outside of any <code>ng-include</code>'d content.</p>
+Due to how Angular builds `ng-include` templates, this module does not support using `ng-include` on your `packery-object` or custom handle elements. Doing so will cause draggability issues.
 
-  <h5>Good:</h5>
-  {% highlight html %}
+To ensure that your dynamic content packs and drags properly, please ensure that the objects and handles are built outside of any `ng-include`'d content.
+
+**Good:**
+
+```
 <packery-object>
   <div ng-include="'template.html'"></div>
 </packery-object>
-  {% endhighlight %}
+```
 
-  <h5>Bad:</h5>
-  {% highlight html %}
+**Bad:**
+
+```
 <packery-object ng-include="'template.html'"></packery-object>
-  {% endhighlight %}
+```
 
-  <h5>Good:</h5>
-  {% highlight html %}
+**Good:**
+
+```
 <packery handle=".card-header">
   <packery-object class="card">
     <header class="card-header"><h3>Drag handle</h3></header>
     <div ng-include="'template.html'"></div>
   </packery-object>
 </packery>
-  {% endhighlight %}
+```
 
-  <h5>Bad:</h5>
-  {% highlight html %}
+**Bad:**
+
+```
 <packery-object handle=".handle-in-template">
   <div ng-include="'template.html'"></div>
 </packery-object>
-  {% endhighlight %}
-</section>
+```
 
+---
 
-<section>
-  <h2>License</h2>
+## License
 
-  <p>This repository is open source and distributed under the MIT License:</p>
+This repository is open source and distributed under the MIT License:
 
-  <div class="highlight">
-    <pre><code>The MIT License
+```
+The MIT License
 
 Copyright (c) 2014 Sungard http://www.sungard.com
 
@@ -215,8 +216,6 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.</code></pre>
-  </div>
-
-  <p>Packery is a product of Metafizzy LLC and is distributed under a separate license. Please refer to <a href="http://packery.metafizzy.co/license.html">their website</a> for information on Packery's license.</p>
-</section>
+THE SOFTWARE.
+```
+Packery is a product of Metafizzy LLC and is distributed under a separate license. Please refer to [their website](http://packery.metafizzy.co/license.html) for information on Packery's license.

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+{% if page.ng-app %}
+  <html ng-app="{{ page.ng-app }}">
+{% else %}
+  <html>
+{% endif %}
+
+{% include head.html %}
+
+<body id="top">
+
+  {% include header.html %}
+
+  <div id="main_wrapper" class="outer">
+    <main id="main" class="inner">
+      {{ content }}
+    </main>
+  </div>
+
+  {% include footer.html %}
+  
+  {% include scripts.html %}
+
+</body>
+</html>

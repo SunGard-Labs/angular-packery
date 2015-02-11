@@ -1,2 +1,6 @@
-app/
-node_modules/
+.DS_Store
+.sass-cache/*
+bower-components/*
+_site/bower-components/*
+
+!_site/bower-components/angular-packery/*

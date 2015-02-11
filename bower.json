@@ -1,13 +1,10 @@
 {
-  "name": "angular-packery-pages",
+  "name": "angular-packery-ghpages",
   "version": "1.0.0",
-  "author": "http://github.com/sungard-labs/angular-packery/graphs/contributors",
-  "homepage": "http://github.com/sungard-labs/angular-packery",
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/sungard-labs/angular-packery.git"
-  },
-  "main": "dist/packery.js",
+  "authors": [
+    "http://github.com/sungard-labs/angular-packery/graphs/contributors"
+  ],
+  "main": "index.html",
   "keywords": [
     "packery",
     "angular",
@@ -17,12 +14,13 @@
     "packing",
     "outlayer",
     "sungard",
-    "sungard-labs"
+    "sungard-labs",
+    "demo",
+    "demos"
   ],
   "dependencies": {
-    "angular": "^1.2.26",
-    "packery": "^1.2.4",
-    "draggabilly": "^1.1.1"
+    "angular-packery": "master"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "private": true
 }

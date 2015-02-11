@@ -1,0 +1,44 @@
+---
+# Necessary front matter for YAML
+---
+@charset "utf-8";
+
+$baseline: 30px;
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.demo-wrapper {
+  background: #272822;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+
+.packery-sizer, .packery-object {
+  height: $baseline;
+  width: $baseline;
+}
+
+.packery-object {
+
+  &.color-a { background: #a6e22e; }
+  &.color-b { background: #66d9ef; }
+  &.color-c { background: #ae81ff; }
+  &.color-d { background: #f92672; }
+
+  &.h-single { height: $baseline; }
+  &.h-double { height: $baseline * 2; }
+  &.h-triple { height: $baseline * 3; }
+  &.w-single { width: $baseline; }
+  &.w-double { width: $baseline * 2; }
+  &.w-triple { width: $baseline * 3; }
+
+  #gutter & {
+    &.h-double { height: ($baseline * 2) + 5px; }
+    &.h-triple { height: ($baseline * 3) + 10px; }
+  }
+}
