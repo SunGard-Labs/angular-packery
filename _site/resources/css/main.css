@@ -563,7 +563,7 @@ pre code {
       color: #a6e22e; }
     .highlight .css .hljs-attribute {
       color: #66d9ef; }
-    .highlight .css .hljs-rules, .highlight .css .hljs-value, .highlight .css .hljs-rule:last-child {
+    .highlight .css .hljs-rules, .highlight .css .hljs-value, .highlight .css .hljs-rule:last-child, .highlight .css .hljs-attr_selector {
       color: #f8f8f2; }
     .highlight .css .hljs-rule {
       color: #f92672; }
@@ -571,6 +571,20 @@ pre code {
       color: #ae81ff; }
     .highlight .css .hljs-string {
       color: #e6db74; }
+    .highlight .css .hljs-comment {
+      color: #75715e; }
+  .highlight .javascript {
+    color: #f8f8f2; }
+    .highlight .javascript .hljs-keyword {
+      color: #66d9ef; }
+    .highlight .javascript .hljs-params {
+      color: #f92672; }
+    .highlight .javascript .hljs-string {
+      color: #e6db74; }
+    .highlight .javascript .hljs-number {
+      color: #ae81ff; }
+    .highlight .javascript .hljs-comment {
+      color: #75715e; }
 
 @media screen and (max-width: 480px) {
   code, pre {

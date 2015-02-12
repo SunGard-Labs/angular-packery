@@ -111,10 +111,20 @@ pre code {
     color: #f92672;
     .hljs-class, .hljs-pseudo { color: #a6e22e; }
     .hljs-attribute { color: #66d9ef; }
-    .hljs-rules, .hljs-value, .hljs-rule:last-child { color: #f8f8f2; }
+    .hljs-rules, .hljs-value, .hljs-rule:last-child, .hljs-attr_selector { color: #f8f8f2; }
     .hljs-rule { color: #f92672; }
     .hljs-number { color: #ae81ff; }
     .hljs-string { color: #e6db74; }
+    .hljs-comment { color: #75715e; }
+  }
+
+  .javascript {
+    color: #f8f8f2;
+    .hljs-keyword { color: #66d9ef; }
+    .hljs-params { color: #f92672; }
+    .hljs-string { color: #e6db74; }
+    .hljs-number { color: #ae81ff; }
+    .hljs-comment { color: #75715e; }
   }
 }
 

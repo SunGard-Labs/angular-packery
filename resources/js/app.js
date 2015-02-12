@@ -1,7 +1,7 @@
 ---
 ---
 
-{% include bower/angular-packery/dist/packery.min.js %}
+{% include bower/angular-packery/dist/packery.js %}
 
 /*!
  * angular-packery-demos
@@ -22,41 +22,136 @@
     $interpolateProvider.startSymbol('{!{').endSymbol('}!}');
   };
 
-  var demosController = function ($scope, $sce) {
+  var demosController = function ($rootScope, $scope, $sce, $timeout) {
+
+    $scope.initDemo = function () {
+      var container = $('#isInitLayout .packery-wrapper'),
+          packeryObj = container.data('Packery');
+
+      if (container.attr('is-init-layout') === "true") { return; } else { container.show(); }
+
+      /* Adding 1 second delay to show unpacked items */
+      $timeout( function () { packeryObj.layout() }, 1000 );
+    };
 
     $scope.parameters = [
+      {
+        id: 'containerStyle',
+        dropdown: [ '{ position: "relative" }', '{ position: "relative", border: "5px solid #fff" }', '{ display: "none" }', '{ position: "relative", background: "#fff" }', 'null' ],
+        selected: '{ position: "relative" }',
+        compile: [
+          '<packery container-style="{!{item.selected}!}">', 
+            '<random-objects></random-objects>',
+          '</packery>'
+        ].join(''),
+        render: {
+          html: [
+            '<packery container-style=\'REPLACE\'>\n',
+            '  <!-- packery-object elements -->\n',
+            '</packery>'
+          ].join('')
+        }
+      },
       {
         id: 'columnWidth',
         dropdown: [ '30', '40', '50', '75' ],
         selected: '40',
-        code: {
-          compile: '<packery column-width="{!{item.selected}!}" class="demo-wrapper"><random-objects no-width num-objects="40"></random-objects></packery>',
-          render: {
-            html: '<packery column-width="REPLACE">\n  <!-- packery-object elements -->\n</packery>'
-          }
+        compile: [
+          '<packery column-width="{!{item.selected}!}">',
+            '<random-objects no-width num-objects="40"></random-objects>',
+          '</packery>'
+        ].join(''),
+        render: {
+          html: [
+            '<packery column-width=\'REPLACE\'>\n',
+            '  <!-- packery-object elements -->\n',
+            '</packery>'
+          ].join('')
         }
       },
       {
         id: 'gutter',
         dropdown: [ '0', '5', '10', '25' ],
         selected: '5',
-        code: {
-          compile: '<packery gutter="{!{item.selected}!}" class="demo-wrapper"><random-objects no-width></random-objects></packery>',
-          render: {
-            html: '<packery gutter="REPLACE">\n  <!-- packery-object elements -->\n</packery>'
-          }
+        compile: [
+          '<packery gutter="{!{item.selected}!}">',
+            '<random-objects no-width></random-objects>',
+          '</packery>'
+        ].join(''),
+        render: {
+          html: [
+            '<packery gutter=\'REPLACE\'>\n',
+              '  <!-- packery-object elements -->\n',
+            '</packery>'
+          ].join(''),
+          css: [
+            '/*\n',
+            '  Adding height to account for 5px gutter\n',
+            '  (baseline * n) + (gutter * (n - 1)), n = multiple of baseline\n',
+            '*/\n',
+            '.packery-object.h-double { height: 65px; }\n',
+            '.packery-object.h-triple { height: 100px; }\n',
+            '/*\n',
+            '  Using other gutter sizes with this CSS will look... funny...\n',
+            '*/'
+          ].join('')
         }
       },
       {
         id: 'isHorizontal',
         dropdown: [ 'true', 'false' ],
         selected: 'true',
-        code: {
-          compile: '<packery is-horizontal="{!{item.selected}!}" class="demo-wrapper"><random-objects></random-objects></packery>',
-          render: {
-            html: '<packery is-horizontal="REPLACE">\n  <!-- packery-object elements -->\n</packery>',
-            css: '.packery-container {\n  height: 210px;\n}'
-          }
+        compile: [
+          '<packery is-horizontal="{!{item.selected}!}">',
+            '<random-objects></random-objects>',
+          '</packery>'
+        ].join(''),
+        render: {
+          html: [
+            '<packery is-horizontal=\'REPLACE\'>\n',
+            '  <!-- packery-object elements -->\n',
+            '</packery>'
+          ].join(''),
+          css: [
+            '.packery-container {\n',
+            '  height: 210px;\n',
+            '}'
+          ].join('')
+        }
+      },
+      {
+        id: 'isInitLayout',
+        dropdown: [ 'false', 'true' ],
+        selected: 'false',
+        compile: [
+          '<a ng-click="initDemo()">Click to init layout</a>',
+          '<packery is-init-layout="{!{item.selected}!}">',
+            '<random-objects></random-objects>',
+          '</packery>'
+        ].join(''),
+        render: {
+          html: [
+            '<a ng-click=\'initDemo()\'>Click me!</a>\n',
+            '<packery is-init-layout=\'REPLACE\'>\n',
+            '  <!-- packery-object elements -->\n',
+            '</packery>'
+          ].join(''),
+          js: [
+            '$scope.initDemo = function () {\n',
+            '  var container = $(\'#isInitLayout .packery-wrapper\'),\n',
+            '      packeryObj = container.data(\'Packery\');\n',
+            '\n',
+            '  container.show();\n',
+            '\n',
+            '  /* Adding 1 second delay to show laying out of items */\n',
+            '  $timeout( function () { packeryObj.layout() }, 1000 );\n',
+            '};'
+          ].join(''),
+          css: [
+            '.packery-wrapper[is-init-layout="false"] {\n',
+            '  display: none;\n',
+            '}'
+          ].join('')
         }
       }
     ];
@@ -146,9 +241,9 @@
   var updateCodeDirective = function ($compile) {
     return function (scope, element) {
       element.bind('change', function () {
-        var htmlRender = $compile('<div render lang="html">{!{item.code.render.html}!}</div>')(scope),
-            cssRender = $compile('<div render lang="css">{!{item.code.render.css}!}</div>')(scope),
-            htmlCompile = $compile('<div compile="item.code.compile"></div>')(scope);
+        var htmlRender = $compile('<div render lang="html">{!{item.render.html}!}</div>')(scope),
+            cssRender = $compile('<div render lang="css">{!{item.render.css}!}</div>')(scope),
+            htmlCompile = $compile('<div compile="item.compile"></div>')(scope);
 
         $(element).parents('.demo').find('div[lang="html"]').replaceWith(htmlRender);
         $(element).parents('.demo').find('div[lang="css"]').replaceWith(cssRender);
@@ -160,7 +255,7 @@
   angular
     .module( 'demos', moduleDependencies )
     .config( [ '$interpolateProvider', moduleConfiguration ] )
-    .controller( 'DemosController', [ '$scope', '$sce', demosController ] )
+    .controller( 'DemosController', [ '$rootScope', '$scope', '$sce', '$timeout', demosController ] )
     .directive ( 'compile', [ '$compile', compileDirective ] )
     .directive( 'randomObjects', [ randomObjectsDirective ] )
     .directive( 'render', [ '$interpolate', '$timeout', renderDirective ] )
