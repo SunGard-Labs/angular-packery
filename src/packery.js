@@ -54,6 +54,7 @@
             id: hash,
             packery: packeryObj
           });
+          el.data('Packery', packeryObj);
           $rootScope.$emit('packeryInstantiated', packeryObj);
           return packeryObj;
         } else {
