@@ -160,6 +160,18 @@
   };
 
   var packeryDirective = function (config, service) {
+    
+    var createObject = function (str) {
+      try {
+        var obj = JSON.parse(JSON.stringify(eval('('+str+')')));
+        if (obj && typeof obj === "object") {
+          return obj;
+        }
+      }
+      catch (e) {}
+      return false;
+    };
+
     return {
       restrict: 'EAC',
       controller: 'PackeryController',
@@ -204,6 +216,9 @@
         if (scope.isOriginLeft === 'false') { scope.isOriginLeft = false; }
         if (scope.isOriginTop === 'false') { scope.isOriginTop = false; }
         if (scope.isResizeBound === 'false') { scope.isResizeBound = false; }
+
+        // Creates JS Object for passing CSS styles into Packery
+        if (scope.containerStyle) { scope.containerStyle = createObject(scope.containerStyle) };
 
         // Set global draggability
         if (scope.draggable) { controller.setDraggable(scope.handle); }
