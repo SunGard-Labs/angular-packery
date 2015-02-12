@@ -1,3 +1,15 @@
+---
+---
+
+{% include bower/angular-packery/dist/packery.min.js %}
+
+/*!
+ * angular-packery-demos
+ * http://github.com/sungard-labs/angular-packery
+ * Version: 1.0.0
+ * License: MIT
+ */
+
 'use strict';
 
 (function (){

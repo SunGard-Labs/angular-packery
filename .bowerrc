@@ -1,4 +1,4 @@
 {
-  "directory": "resources/lib",
+  "directory": "_includes/bower",
   "json": "bower.json"
 }
