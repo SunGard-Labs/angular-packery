@@ -249,7 +249,7 @@
   var packeryTemplates = function ($templateCache) {
     $templateCache
       .put('template/packery/packery.html', [
-        '<div>', 
+        '<div class="packery-wrapper">', 
           '<div class="packery-sizer"></div>',
           '<div class="packery-container" ng-transclude></div>',
         '</div>'
