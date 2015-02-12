@@ -1,7 +1,7 @@
 ---
 ---
 
-{% include bower/angular-packery/dist/packery.js %}
+{% include bower/angular-packery/src/packery.js %}
 
 /*!
  * angular-packery-demos
