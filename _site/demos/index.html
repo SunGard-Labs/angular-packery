@@ -62,8 +62,15 @@
       <a href="#top" class="return_link">&#8593; back to top</a>
     </h3>
 
-    <h5>HTML</h5>
-    <div render>{!{item.code.render}!}</div>
+    <span ng-if="item.code.render.html">
+      <h5>HTML</h5>
+      <div render lang="html">{!{item.code.render.html}!}</div>
+    </span>
+
+    <span ng-if="item.code.render.css">
+      <h5>CSS</h5>
+      <div render lang="css">{!{item.code.render.css}!}</div>
+    </span>
 
     <h5>Compiled</h5>
     <div compile="item.code.compile"></div>

@@ -35,7 +35,9 @@
         selected: '40',
         code: {
           compile: '<packery column-width="{!{item.selected}!}" class="demo-wrapper"><random-objects no-width num-objects="40"></random-objects></packery>',
-          render: '<packery column-width="REPLACE">\n  <!-- packery-object elements -->\n</packery>'
+          render: {
+            html: '<packery column-width="REPLACE">\n  <!-- packery-object elements -->\n</packery>'
+          }
         }
       },
       {
@@ -44,7 +46,9 @@
         selected: '5',
         code: {
           compile: '<packery gutter="{!{item.selected}!}" class="demo-wrapper"><random-objects no-width></random-objects></packery>',
-          render: '<packery gutter="REPLACE">\n  <!-- packery-object elements -->\n</packery>'
+          render: {
+            html: '<packery gutter="REPLACE">\n  <!-- packery-object elements -->\n</packery>'
+          }
         }
       },
       {
@@ -53,7 +57,10 @@
         selected: 'true',
         code: {
           compile: '<packery is-horizontal="{!{item.selected}!}" class="demo-wrapper"><random-objects></random-objects></packery>',
-          render: '<packery is-horizontal="REPLACE">\n  <!-- packery-object elements -->\n</packery>'
+          render: {
+            html: '<packery is-horizontal="REPLACE">\n  <!-- packery-object elements -->\n</packery>',
+            css: '.packery-container {\n  height: 210px;\n}'
+          }
         }
       }
     ];
@@ -119,12 +126,15 @@
   var renderDirective = function ($interpolate, $timeout) {
     return {
       restrict: 'A',
-      template: '<div class="highlight" style="display:none;"><pre><code class="html" ng-transclude></code></pre></div>',
+      scope: {
+        lang: '@'
+      },
+      template: '<div class="highlight" style="display:none;"><pre><code class="{!{ lang }!}" ng-transclude></code></pre></div>',
       transclude: true,
       replace: true,
       link: function (scope, element) {
         $timeout(function () {
-          var interpolated = $interpolate('{!{item.selected}!}')(scope),
+          var interpolated = $interpolate('{!{$parent.item.selected}!}')(scope),
               wrapper = element.find('span'),
               oldText = wrapper.text(),
               newText = oldText.replace(/REPLACE/i, interpolated);
@@ -140,10 +150,12 @@
   var updateCodeDirective = function ($compile) {
     return function (scope, element) {
       element.bind('change', function () {
-        var htmlRender = $compile('<div render>{!{item.code.render}!}</div>')(scope),
+        var htmlRender = $compile('<div render lang="html">{!{item.code.render.html}!}</div>')(scope),
+            cssRender = $compile('<div render lang="css">{!{item.code.render.css}!}</div>')(scope),
             htmlCompile = $compile('<div compile="item.code.compile"></div>')(scope);
 
-        $(element).parents('.demo').find('div[render]').replaceWith(htmlRender);
+        $(element).parents('.demo').find('div[lang="html"]').replaceWith(htmlRender);
+        $(element).parents('.demo').find('div[lang="css"]').replaceWith(cssRender);
         $(element).parents('.demo').find('div[compile]').replaceWith(htmlCompile);
       });
     };

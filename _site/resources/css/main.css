@@ -549,14 +549,28 @@ pre code {
     color: #f92672; }
   .highlight .gi {
     color: #a6e22e; }
-  .highlight .hljs-tag, .highlight .hljs-title {
+  .highlight .html .hljs-tag, .highlight .html .hljs-title {
     color: #f92672; }
-  .highlight .hljs-value {
+  .highlight .html .hljs-value {
     color: #e6db74; }
-  .highlight .hljs-attribute {
+  .highlight .html .hljs-attribute {
     color: #a6e22e; }
-  .highlight .hljs-comment {
+  .highlight .html .hljs-comment {
     color: #75715e; }
+  .highlight .css {
+    color: #f92672; }
+    .highlight .css .hljs-class, .highlight .css .hljs-pseudo {
+      color: #a6e22e; }
+    .highlight .css .hljs-attribute {
+      color: #66d9ef; }
+    .highlight .css .hljs-rules, .highlight .css .hljs-value, .highlight .css .hljs-rule:last-child {
+      color: #f8f8f2; }
+    .highlight .css .hljs-rule {
+      color: #f92672; }
+    .highlight .css .hljs-number {
+      color: #ae81ff; }
+    .highlight .css .hljs-string {
+      color: #e6db74; }
 
 @media screen and (max-width: 480px) {
   code, pre {

@@ -100,10 +100,22 @@ pre code {
   .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
   .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
 
-  .hljs-tag, .hljs-title { color: #f92672; }
-  .hljs-value { color: #e6db74; }
-  .hljs-attribute { color: #a6e22e; }
-  .hljs-comment { color: #75715e; }
+  .html {
+    .hljs-tag, .hljs-title { color: #f92672; }
+    .hljs-value { color: #e6db74; }
+    .hljs-attribute { color: #a6e22e; }
+    .hljs-comment { color: #75715e; }
+  }
+
+  .css {
+    color: #f92672;
+    .hljs-class, .hljs-pseudo { color: #a6e22e; }
+    .hljs-attribute { color: #66d9ef; }
+    .hljs-rules, .hljs-value, .hljs-rule:last-child { color: #f8f8f2; }
+    .hljs-rule { color: #f92672; }
+    .hljs-number { color: #ae81ff; }
+    .hljs-string { color: #e6db74; }
+  }
 }
 
 
