@@ -58,7 +58,7 @@ h1 {
 h2 {
   padding-bottom: 10px;
   font-size: 32px;
-  border-bottom: 1px dashed #ccc; }
+  border-bottom: 1px dashed #bbb; }
 
 h3 {
   font-size: 24px; }
@@ -273,17 +273,12 @@ Full-Width Styles
 
 #main {
   padding: 40px 0; }
-  #main .demo {
-    padding-bottom: 40px; }
   #main > section {
     padding-bottom: 50px;
-    border-bottom: 1px dashed #ccc; }
+    border-bottom: 1px dashed #bbb; }
     #main > section:last-child {
       padding-bottom: none;
       border-bottom: none; }
-    #main > section .return_link {
-      font-size: 11px;
-      padding-left: 20px; }
 
 #footer_wrap {
   background: #212121; }
@@ -554,6 +549,14 @@ pre code {
     color: #f92672; }
   .highlight .gi {
     color: #a6e22e; }
+  .highlight .hljs-tag, .highlight .hljs-title {
+    color: #f92672; }
+  .highlight .hljs-value {
+    color: #e6db74; }
+  .highlight .hljs-attribute {
+    color: #a6e22e; }
+  .highlight .hljs-comment {
+    color: #75715e; }
 
 @media screen and (max-width: 480px) {
   code, pre {

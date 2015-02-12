@@ -28,7 +28,7 @@ h1 {
 h2 {
   padding-bottom: 10px;
   font-size: 32px;
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 1px dashed #bbb;
 }
 
 h3 {
@@ -296,22 +296,13 @@ Full-Width Styles
 #main {
   padding: 40px 0;
 
-  .demo {
-    padding-bottom: 40px;
-  }
-
   > section {
     padding-bottom: 50px;
-    border-bottom: 1px dashed #ccc;
+    border-bottom: 1px dashed #bbb;
 
     &:last-child {
       padding-bottom: none;
       border-bottom: none;
-    }
-
-    .return_link {
-      font-size: 11px;
-      padding-left: 20px;
     }
   }
 }

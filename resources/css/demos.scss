@@ -9,6 +9,38 @@ $baseline: 30px;
   display: none !important;
 }
 
+.demo {
+  padding-bottom: 40px;
+
+  hr {
+    width: 300px;
+    color: transparent;
+    border: none;
+    border-bottom: 1px dashed #ddd;
+    margin-top: 30px;
+    float: left;
+  }
+
+  &:last-child hr {
+    display: none;
+  }
+
+  > h3 {
+    clear: both;
+
+    select {
+      position: relative;
+      top: -5px;
+      margin-left: 10px;
+    }
+
+    .return_link {
+      font-size: 11px;
+      padding-left: 20px;
+    }
+  }
+}
+
 .demo-wrapper {
   background: #272822;
   border-radius: 2px;
@@ -24,6 +56,8 @@ $baseline: 30px;
 }
 
 .packery-object {
+  box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,.1);
 
   &.color-a { background: #a6e22e; }
   &.color-b { background: #66d9ef; }
@@ -36,9 +70,17 @@ $baseline: 30px;
   &.w-single { width: $baseline; }
   &.w-double { width: $baseline * 2; }
   &.w-triple { width: $baseline * 3; }
+}
 
-  #gutter & {
+#gutter {
+  .packery-object {
     &.h-double { height: ($baseline * 2) + 5px; }
     &.h-triple { height: ($baseline * 3) + 10px; }
+  }
+}
+
+#isHorizontal {
+  .packery-container {
+    height: $baseline * 7;
   }
 }

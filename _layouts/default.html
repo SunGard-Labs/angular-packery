@@ -13,7 +13,12 @@
   {% include header.html %}
 
   <div id="main_wrapper" class="outer">
-    <main id="main" class="inner">
+    {% if page.ng-app %}
+      <main id="main" class="inner" ng-controller="{{ page.ng-app | capitalize }}Controller">
+    {% else %}
+      <main id="main" class="inner">
+    {% endif %}
+    
       {{ content }}
     </main>
   </div>
