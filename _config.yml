@@ -3,6 +3,7 @@ title: angular-packery
 description: An AngularJS module for the Packery bin-packing library
 maintainer: SunGard-Labs
 repo: https://github.com/sungard-labs
+baseurl: /angular-packery/
 google-analytics: "UA-16186421-5"
 keywords: [
   'packery',

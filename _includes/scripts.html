@@ -1,4 +1,7 @@
 {% for url in page.js %}
+  <script src="{{ url | prepend: site.baseurl }}"></script>
+{% endfor %}
+{% for url in page.js-cdn %}
   <script src="{{ url }}"></script>
 {% endfor %}
 
