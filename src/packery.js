@@ -207,7 +207,7 @@
         if (scope.isResizeBound === 'false') { scope.isResizeBound = false; }
 
         // Creates JS Object for passing CSS styles into Packery
-        if (scope.containerStyle && (typeof scope.containerStyle === 'Object' )) { scope.containerStyle = scope.containerStyle };
+        if (scope.containerStyle && (typeof scope.containerStyle === 'object' )) { scope.containerStyle = scope.containerStyle; }
 
         // Set global draggability
         if (scope.draggable) { controller.setDraggable(scope.handle); }
