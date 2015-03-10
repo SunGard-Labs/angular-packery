@@ -164,7 +164,7 @@
     var createObject = function (str) {
       try {
         var obj = JSON.parse(JSON.stringify(eval('('+str+')')));
-        if (obj && typeof obj === "object") {
+        if (obj && typeof obj === 'object') {
           return obj;
         }
       }
@@ -218,7 +218,7 @@
         if (scope.isResizeBound === 'false') { scope.isResizeBound = false; }
 
         // Creates JS Object for passing CSS styles into Packery
-        if (scope.containerStyle) { scope.containerStyle = createObject(scope.containerStyle) };
+        if (scope.containerStyle) { scope.containerStyle = createObject(scope.containerStyle); }
 
         // Set global draggability
         if (scope.draggable) { controller.setDraggable(scope.handle); }
