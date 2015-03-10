@@ -65,4 +65,8 @@ module.exports = function( grunt ) {
     'usebanner'
   ]);
 
+  grunt.registerTask( 'test', [
+    'jshint'
+  ]);
+
 };

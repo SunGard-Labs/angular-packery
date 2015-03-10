@@ -29,7 +29,8 @@
     "grunt-banner": "~0.2.3"
   },
   "scripts": {
-    "postinstall": "bower install"
+    "postinstall": "bower install",
+    "test": "grunt test --verbose"
   },
   "license": "MIT"
 }
