@@ -59,7 +59,7 @@
           return packeryObj;
         } else {
           var interval = $interval(function(){
-            if (packeryObj !== undefined) { 
+            if (packeryObj !== undefined) {
               $interval.cancel(interval);
               deferred.resolve(packeryObj);
             }
@@ -69,7 +69,7 @@
             $interval.cancel(interval);
             deferred.reject(false);
           }, config.timeout);
-          
+
           return deferred.promise;
         }
       }
@@ -87,7 +87,7 @@
     self.packery = {};
 
     this.bindDragEvents = function(el) {
-      var handleSelector, handle, draggabilly;   
+      var handleSelector, handle, draggabilly;
 
       handleSelector = self.dragHandle;
 
@@ -150,7 +150,7 @@
 
         el.css('visibility','visible');
         $rootScope.$emit('packeryObjectPacked', el[0]);
-      });    
+      });
     };
 
     this.setDraggable = function (handle) {
@@ -160,7 +160,7 @@
   };
 
   var packeryDirective = function (config, service) {
-    
+
     var createObject = function (str) {
       try {
         var obj = JSON.parse(JSON.stringify(eval('('+str+')')));
@@ -195,7 +195,7 @@
         handle: '@?' // Type: Boolean
 
         // Let's come back to this one...
-        // stamp: '@?', 
+        // stamp: '@?',
       },
       link: function (scope, element, attrs, controller) {
 
@@ -256,7 +256,7 @@
         element.css('visibility','hidden');
 
         // Packs individual objects
-        controller.packObject(element);    
+        controller.packObject(element);
       }
     };
   };
@@ -264,7 +264,7 @@
   var packeryTemplates = function ($templateCache) {
     $templateCache
       .put('template/packery/packery.html', [
-        '<div class="packery-wrapper">', 
+        '<div class="packery-wrapper">',
           '<div class="packery-sizer"></div>',
           '<div class="packery-container" ng-transclude></div>',
         '</div>'

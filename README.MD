@@ -20,7 +20,7 @@ Angular module for the popular Packery library.
 By default, this module listens for an element or attribute call and instantiates with the options described in [Packery's API](http://packery.metafizzy.co/options.html). It looks to a self-created object, `div.packery-sizer`, to control the grid dimensions.
 
 ##### HTML #####
- 
+
 ```
 <packery ng-init="objects = [{id:'1'},{id:'2'},{id:'3'}]">
 
@@ -48,7 +48,7 @@ By default, this module listens for an element or attribute call and instantiate
 
 </packery>
 ```
-  
+
 #### CSS ####
 
 ```
@@ -119,7 +119,7 @@ This module supports almost all of the Packery options in their intended form. A
 
 ## CSS Classes / Animating ##
 
-Two CSS classes are applied to the objects to show depth during dragging events, `hovered` and `lifted`. The classes are triggered by both mouse events and touch events. 
+Two CSS classes are applied to the objects to show depth during dragging events, `hovered` and `lifted`. The classes are triggered by both mouse events and touch events.
 
 Animation can be applied easily with CSS:
 
