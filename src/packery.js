@@ -54,6 +54,7 @@
             id: hash,
             packery: packeryObj
           });
+          el.data('Packery', packeryObj);
           $rootScope.$emit('packeryInstantiated', packeryObj);
           return packeryObj;
         } else {
@@ -97,14 +98,14 @@
         draggabilly = new Draggabilly(el[0], {
           handle: handleSelector
         });
-        handle = el.querySelectorAll(handleSelector);
+        handle = el[0].querySelectorAll(handleSelector);
       }
 
       // Init Draggabilly events
       self.packery.bindDraggabillyEvents(draggabilly);
 
       // Bind animate events for touch
-      handle.on('mouseenter', function(){
+      angular.element(handle).on('mouseenter', function(){
         el.addClass('hovered');
       }).
       on('mouseleave', function(){
@@ -159,6 +160,18 @@
   };
 
   var packeryDirective = function (config, service) {
+    
+    var createObject = function (str) {
+      try {
+        var obj = JSON.parse(JSON.stringify(eval('('+str+')')));
+        if (obj && typeof obj === "object") {
+          return obj;
+        }
+      }
+      catch (e) {}
+      return false;
+    };
+
     return {
       restrict: 'EAC',
       controller: 'PackeryController',
@@ -204,6 +217,9 @@
         if (scope.isOriginTop === 'false') { scope.isOriginTop = false; }
         if (scope.isResizeBound === 'false') { scope.isResizeBound = false; }
 
+        // Creates JS Object for passing CSS styles into Packery
+        if (scope.containerStyle) { scope.containerStyle = createObject(scope.containerStyle) };
+
         // Set global draggability
         if (scope.draggable) { controller.setDraggable(scope.handle); }
 
@@ -248,7 +264,7 @@
   var packeryTemplates = function ($templateCache) {
     $templateCache
       .put('template/packery/packery.html', [
-        '<div>', 
+        '<div class="packery-wrapper">', 
           '<div class="packery-sizer"></div>',
           '<div class="packery-container" ng-transclude></div>',
         '</div>'
