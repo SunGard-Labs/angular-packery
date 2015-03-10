@@ -161,17 +161,6 @@
 
   var packeryDirective = function (config, service) {
 
-    var createObject = function (str) {
-      try {
-        var obj = JSON.parse(JSON.stringify(eval('('+str+')')));
-        if (obj && typeof obj === 'object') {
-          return obj;
-        }
-      }
-      catch (e) {}
-      return false;
-    };
-
     return {
       restrict: 'EAC',
       controller: 'PackeryController',
@@ -179,7 +168,7 @@
       replace: true,
       templateUrl: 'template/packery/packery.html',
       scope: {
-        containerStyle: '@?', // Type: Object, null
+        containerStyle: '=?', // Type: Object, null
         columnWidth: '@?', // Type: Number, Selector String
         gutter: '@?', // Type: Number, Selector String
         isHorizontal: '@?', // Type: Boolean
@@ -218,7 +207,7 @@
         if (scope.isResizeBound === 'false') { scope.isResizeBound = false; }
 
         // Creates JS Object for passing CSS styles into Packery
-        if (scope.containerStyle) { scope.containerStyle = createObject(scope.containerStyle); }
+        if (scope.containerStyle && (typeof scope.containerStyle === 'Object' )) { scope.containerStyle = scope.containerStyle };
 
         // Set global draggability
         if (scope.draggable) { controller.setDraggable(scope.handle); }
