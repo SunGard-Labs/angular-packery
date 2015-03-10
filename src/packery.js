@@ -59,7 +59,7 @@
           return packeryObj;
         } else {
           var interval = $interval(function(){
-            if (packeryObj !== undefined) { 
+            if (packeryObj !== undefined) {
               $interval.cancel(interval);
               deferred.resolve(packeryObj);
             }
@@ -69,7 +69,7 @@
             $interval.cancel(interval);
             deferred.reject(false);
           }, config.timeout);
-          
+
           return deferred.promise;
         }
       }
@@ -87,7 +87,7 @@
     self.packery = {};
 
     this.bindDragEvents = function(el) {
-      var handleSelector, handle, draggabilly;   
+      var handleSelector, handle, draggabilly;
 
       handleSelector = self.dragHandle;
 
@@ -150,7 +150,7 @@
 
         el.css('visibility','visible');
         $rootScope.$emit('packeryObjectPacked', el[0]);
-      });    
+      });
     };
 
     this.setDraggable = function (handle) {
@@ -160,17 +160,6 @@
   };
 
   var packeryDirective = function (config, service) {
-    
-    var createObject = function (str) {
-      try {
-        var obj = JSON.parse(JSON.stringify(eval('('+str+')')));
-        if (obj && typeof obj === "object") {
-          return obj;
-        }
-      }
-      catch (e) {}
-      return false;
-    };
 
     return {
       restrict: 'EAC',
@@ -179,7 +168,7 @@
       replace: true,
       templateUrl: 'template/packery/packery.html',
       scope: {
-        containerStyle: '@?', // Type: Object, null
+        containerStyle: '=?', // Type: Object, null
         columnWidth: '@?', // Type: Number, Selector String
         gutter: '@?', // Type: Number, Selector String
         isHorizontal: '@?', // Type: Boolean
@@ -195,7 +184,7 @@
         handle: '@?' // Type: Boolean
 
         // Let's come back to this one...
-        // stamp: '@?', 
+        // stamp: '@?',
       },
       link: function (scope, element, attrs, controller) {
 
@@ -218,7 +207,7 @@
         if (scope.isResizeBound === 'false') { scope.isResizeBound = false; }
 
         // Creates JS Object for passing CSS styles into Packery
-        if (scope.containerStyle) { scope.containerStyle = createObject(scope.containerStyle) };
+        if (scope.containerStyle && (typeof scope.containerStyle === 'object' )) { scope.containerStyle = scope.containerStyle; }
 
         // Set global draggability
         if (scope.draggable) { controller.setDraggable(scope.handle); }
@@ -256,7 +245,7 @@
         element.css('visibility','hidden');
 
         // Packs individual objects
-        controller.packObject(element);    
+        controller.packObject(element);
       }
     };
   };
@@ -264,7 +253,7 @@
   var packeryTemplates = function ($templateCache) {
     $templateCache
       .put('template/packery/packery.html', [
-        '<div class="packery-wrapper">', 
+        '<div class="packery-wrapper">',
           '<div class="packery-sizer"></div>',
           '<div class="packery-container" ng-transclude></div>',
         '</div>'
