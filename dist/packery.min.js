@@ -1,7 +1,7 @@
 /*!
  * angular-packery
  * http://github.com/sungard-labs/angular-packery
- * Version: 1.0.3
+ * Version: 1.0.4
  * License: MIT
  */
 
