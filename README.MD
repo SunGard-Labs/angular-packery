@@ -3,6 +3,7 @@
 Angular module for the popular Packery library.
 
 [![Travis CI](https://api.travis-ci.org/SunGard-Labs/angular-packery.svg?branch=master)](http://travis-ci.org/SunGard-Labs/angular-packery)
+[![David](https://david-dm.org/SunGard-Labs/angular-packery.svg)](https://david-dm.org/SunGard-Labs/angular-packery)
 
 
 #### Requirements ####
