@@ -1,7 +1,7 @@
 /*!
  * angular-packery
  * http://github.com/sungard-labs/angular-packery
- * Version: 1.0.2
+ * Version: 1.0.4
  * License: MIT
  */
 
@@ -61,6 +61,7 @@
             id: hash,
             packery: packeryObj
           });
+          el.data('Packery', packeryObj);
           $rootScope.$emit('packeryInstantiated', packeryObj);
           return packeryObj;
         } else {
@@ -104,14 +105,14 @@
         draggabilly = new Draggabilly(el[0], {
           handle: handleSelector
         });
-        handle = el.querySelectorAll(handleSelector);
+        handle = el[0].querySelectorAll(handleSelector);
       }
 
       // Init Draggabilly events
       self.packery.bindDraggabillyEvents(draggabilly);
 
       // Bind animate events for touch
-      handle.on('mouseenter', function(){
+      angular.element(handle).on('mouseenter', function(){
         el.addClass('hovered');
       }).
       on('mouseleave', function(){
@@ -166,6 +167,7 @@
   };
 
   var packeryDirective = function (config, service) {
+
     return {
       restrict: 'EAC',
       controller: 'PackeryController',
@@ -173,7 +175,7 @@
       replace: true,
       templateUrl: 'template/packery/packery.html',
       scope: {
-        containerStyle: '@?', // Type: Object, null
+        containerStyle: '=?', // Type: Object, null
         columnWidth: '@?', // Type: Number, Selector String
         gutter: '@?', // Type: Number, Selector String
         isHorizontal: '@?', // Type: Boolean
@@ -210,6 +212,9 @@
         if (scope.isOriginLeft === 'false') { scope.isOriginLeft = false; }
         if (scope.isOriginTop === 'false') { scope.isOriginTop = false; }
         if (scope.isResizeBound === 'false') { scope.isResizeBound = false; }
+
+        // Creates JS Object for passing CSS styles into Packery
+        if (scope.containerStyle && (typeof scope.containerStyle === 'object' )) { scope.containerStyle = scope.containerStyle; }
 
         // Set global draggability
         if (scope.draggable) { controller.setDraggable(scope.handle); }
@@ -255,7 +260,7 @@
   var packeryTemplates = function ($templateCache) {
     $templateCache
       .put('template/packery/packery.html', [
-        '<div>',
+        '<div class="packery-wrapper">',
           '<div class="packery-sizer"></div>',
           '<div class="packery-container" ng-transclude></div>',
         '</div>'
