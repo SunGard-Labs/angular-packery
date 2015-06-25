@@ -19,7 +19,7 @@ module.exports = function( grunt ) {
     copy: {
       js: {
         files: {
-          'dist/packery.js': [ 'src/packery.js' ]
+          'dist/angular-packery.js': [ 'src/angular-packery.js' ]
         }
       }
     },
@@ -27,7 +27,7 @@ module.exports = function( grunt ) {
     uglify: {
       min: {
         files: {
-          'dist/packery.min.js': [ 'dist/packery.js' ]
+          'dist/angular-packery.min.js': [ 'dist/angular-packery.js' ]
         }
       }
     },
@@ -36,8 +36,8 @@ module.exports = function( grunt ) {
       dist: {
         files: {
           src: [
-            'dist/packery.js',
-            'dist/packery.min.js'
+            'dist/angular-packery.js',
+            'dist/angular-packery.min.js'
           ]
         },
         options: {
