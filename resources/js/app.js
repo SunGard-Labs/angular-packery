@@ -1,8 +1,3 @@
----
----
-
-{% include bower/angular-packery/src/packery.js %}
-
 /*!
  * angular-packery-demos
  * http://github.com/sungard-labs/angular-packery
