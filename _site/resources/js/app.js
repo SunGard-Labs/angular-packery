@@ -328,7 +328,7 @@
         dropdown: [ '{ position: "relative" }', '{ position: "relative", border: "5px solid #fff" }', '{ display: "none" }', '{ position: "relative", background: "#fff" }', 'null' ],
         selected: '{ position: "relative" }',
         compile: [
-          '<packery container-style="{!{item.selected}!}">', 
+          '<packery container-style="{!{item.selected}!}">',
             '<random-objects></random-objects>',
           '</packery>'
         ].join(''),
@@ -472,7 +472,7 @@
 
         var randomize = function (array) {
           return array[ Math.floor( Math.random() * array.length ) ];
-        } 
+        }
 
         for (var i = 0; i < numObjects; i++) {
           html += "<packery-object class='";
