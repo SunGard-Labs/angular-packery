@@ -1,7 +1,7 @@
 /*!
  * angular-packery
  * http://github.com/sungard-labs/angular-packery
- * Version: 1.0.4
+ * Version: 1.1.0-dev
  * License: MIT
  */
 
@@ -20,6 +20,7 @@
     draggable: true,
     handle: '*',
     timeout: 2000,
+    isAppended: true,
     acceptedAttributes: [
       'containerStyle',
       'columnWidth',
@@ -31,7 +32,8 @@
       'isResizeBound',
       'itemSelector',
       'rowHeight',
-      'transitionDuration'
+      'transitionDuration',
+      'isAppended'
     ]
   };
 
@@ -148,7 +150,11 @@
         var packeryEls = self.packery.getItemElements();
 
         if (packeryEls.indexOf(el[0]) === -1) {
-          self.packery.appended(el[0]);
+          if (self.packery.options.isAppended === 0) {
+            self.packery.prepended(el[0]);
+          } else {
+            self.packery.appended(el[0]);
+          }
         }
 
         if (self.packeryDraggable === true) {
@@ -186,7 +192,7 @@
         itemSelector: '@?', // Type: Selector String
         rowHeight: '@?', // Type: Number, Selector String
         transitionDuration: '@?', // Type: String
-
+        isAppended: '@?', // Type: Boolean
         draggable: '@?', // Type: Boolean
         handle: '@?' // Type: Boolean
 
@@ -212,6 +218,7 @@
         if (scope.isOriginLeft === 'false') { scope.isOriginLeft = false; }
         if (scope.isOriginTop === 'false') { scope.isOriginTop = false; }
         if (scope.isResizeBound === 'false') { scope.isResizeBound = false; }
+        if (scope.isAppended === 'false') { scope.isAppended = false; }
 
         // Creates JS Object for passing CSS styles into Packery
         if (scope.containerStyle && (typeof scope.containerStyle === 'object' )) { scope.containerStyle = scope.containerStyle; }
