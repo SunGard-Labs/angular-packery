@@ -358,6 +358,23 @@
         }
       },
       {
+        id: 'draggable',
+        dropdown: [ 'true', 'false' ],
+        selected: 'true',
+        compile: [
+          '<packery draggable="{!{item.selected}!}">',
+            '<random-objects></random-objects>',
+          '</packery>'
+        ].join(''),
+        render: {
+          html: [
+            '<packery draggable=\'REPLACE\'>\n',
+            '  <!-- packery-object elements -->\n',
+            '</packery>'
+          ].join('')
+        }
+      },
+      {
         id: 'gutter',
         dropdown: [ '0', '5', '10', '25' ],
         selected: '5',
@@ -439,6 +456,91 @@
             '.packery-wrapper[is-init-layout="false"] {\n',
             '  display: none;\n',
             '}'
+          ].join('')
+        }
+      },
+      {
+        id: 'isOriginLeft',
+        dropdown: [ 'true', 'false' ],
+        selected: 'true',
+        compile: [
+          '<packery is-origin-left="{!{item.selected}!}">',
+            '<random-objects></random-objects>',
+          '</packery>'
+        ].join(''),
+        render: {
+          html: [
+            '<packery is-origin-left=\'REPLACE\'>\n',
+            '  <!-- packery-object elements -->\n',
+            '</packery>'
+          ].join('')
+        }
+      },
+      {
+        id: 'isOriginTop',
+        dropdown: [ 'true', 'false' ],
+        selected: 'true',
+        compile: [
+          '<packery is-origin-top="{!{item.selected}!}">',
+            '<random-objects></random-objects>',
+          '</packery>'
+        ].join(''),
+        render: {
+          html: [
+            '<packery is-origin-top=\'REPLACE\'>\n',
+            '  <!-- packery-object elements -->\n',
+            '</packery>'
+          ].join('')
+        }
+      },
+      {
+        id: 'isResizeBound',
+        dropdown: [ 'true', 'false' ],
+        selected: 'true',
+        compile: [
+          '<packery is-resize-bound="{!{item.selected}!}">',
+            '<random-objects></random-objects>',
+          '</packery>'
+        ].join(''),
+        render: {
+          html: [
+            '<packery is-resize-bound=\'REPLACE\'>\n',
+            '  <!-- packery-object elements -->\n',
+            '</packery>'
+          ].join('')
+        }
+      },
+      {
+        id: 'rowHeight',
+        dropdown: [ '30', '60', '90', '120' ],
+        selected: '30',
+        compile: [
+          '<packery row-height="{!{item.selected}!}">',
+            '<random-objects></random-objects>',
+          '</packery>'
+        ].join(''),
+        render: {
+          html: [
+            '<packery row-height=\'REPLACE\'>\n',
+              '  <!-- packery-object elements -->\n',
+            '</packery>'
+          ].join('')
+        }
+      },
+      {
+        id: 'transitionDuration',
+        dropdown: [ '0.4s', '1s', '2s' ],
+        selected: '0.4s',
+        compile: [
+          '<packery transition-duration="{!{item.selected}!}">',
+            '<random-objects></random-objects>',
+          '</packery>'
+        ].join(''),
+        render: {
+          html: [
+            '<packery transition-duration=\'REPLACE\'>\n',
+              '  <!-- packery-object elements -->\n',
+            '</packery>'
           ].join('')
         }
       }
