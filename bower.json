@@ -19,7 +19,7 @@
     "demos"
   ],
   "dependencies": {
-    "angular-packery": "https://github.com/joshuahiggins/angular-packery.git#dev"
+    "angular-packery": "~1.0.4"
   },
   "license": "MIT",
   "private": true
